@@ -27,14 +27,6 @@ This project uses a graphical interface (GUI) built with Tkinter and stores your
 
 ---
 
-## 📸 Screenshots
-
-| Main App UI | Pie Chart |
-|-------------|-----------|
-| ![Main UI](your_screenshot_url_here) | ![Pie Chart](your_screenshot_url_here) |
-
----
-
 ## 🔧 How to Run
 
 1.⁠ ⁠Make sure you have Python 3 installed.
