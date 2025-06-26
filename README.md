@@ -1,4 +1,4 @@
-# 💰 Expense Tracker (Python + Tkinter + SQLite)
+# Expense Tracker (Python + Tkinter + SQLite)
 
 A simple and elegant desktop application to track your personal expenses using Python.
 
@@ -6,7 +6,7 @@ This project uses a graphical interface (GUI) built with Tkinter and stores your
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 
 •⁠  ⁠*Python 3*
 •⁠  ⁠*Tkinter* – GUI for input and display
@@ -16,18 +16,18 @@ This project uses a graphical interface (GUI) built with Tkinter and stores your
 
 ---
 
-## 🚀 Features
+## Features
 
-•⁠  ⁠✅ *Add* new expense entries with category, amount, date, and notes
-•⁠  ⁠✏️ *Edit & Update* existing entries directly from the expense table
-•⁠  ⁠❌ *Delete* any selected expense with one click
-•⁠  ⁠📊 *Visualize* spending by category in a pie chart
-•⁠  ⁠🧾 *View* all past transactions in a sortable table
-•⁠  ⁠📅 Auto-fills current date for convenience
+•⁠  ⁠*Add* new expense entries with category, amount, date, and notes
+•⁠  ⁠*Edit & Update* existing entries directly from the expense table
+•⁠  ⁠*Delete* any selected expense with one click
+•⁠  ⁠*Visualize* spending by category in a pie chart
+•⁠  ⁠*View* all past transactions in a sortable table
+•⁠  ⁠Auto-fills current date for convenience
 
 ---
 
-## 🔧 How to Run
+## How to Run
 
 1.⁠ ⁠Make sure you have Python 3 installed.
 2.⁠ ⁠Clone the repo or download the files.
