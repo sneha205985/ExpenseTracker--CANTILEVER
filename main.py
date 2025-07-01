@@ -4,13 +4,16 @@ from database import init_db, insert_expense, get_all_expenses, delete_expense, 
 from visualizer import show_pie_chart
 from utils import today_date
 
-selected_expense_id = None  # Global for edit/update
+selected_expense_id = None     # Global for edit/update
+total_label=None
 
-def refresh_table(tree):
+def refresh_table(tree, total_label=None):
     for row in tree.get_children():
         tree.delete(row)
     for row in get_all_expenses():
         tree.insert("", tk.END, values=row)
+    if total_label:
+        total_label.config(text=f"Total Expense: Rs{get_total_expense():.2f}")
 
 def submit_expense(date, category, amount, notes, tree):
     if not category or not amount:
@@ -19,6 +22,7 @@ def submit_expense(date, category, amount, notes, tree):
     try:
         insert_expense(date, category, float(amount), notes)
         refresh_table(tree)
+        update_total_label()
         clear_entries()
     except ValueError:
         messagebox.showerror("Error", "Invalid amount")
@@ -30,6 +34,7 @@ def delete_selected(tree):
         expense_id = item['values'][0]
         delete_expense(expense_id)
         refresh_table(tree)
+        update_total_label()
 
 def edit_selected(tree):
     global selected_expense_id
@@ -56,6 +61,7 @@ def update_expense(date, category, amount, notes, tree):
         update_expense_by_id(selected_expense_id, date, category, float(amount), notes)
         selected_expense_id = None
         refresh_table(tree)
+        update_total_label()
         clear_entries()
     except ValueError:
         messagebox.showerror("Error", "Invalid amount entered.")
@@ -66,6 +72,13 @@ def clear_entries():
     amount_entry.delete(0, tk.END)
     notes_entry.delete(0, tk.END)
     date_entry.insert(0, today_date())
+
+def get_total_expense(): #total expense
+    return sum(float(row[3]) for row in get_all_expenses())
+
+def update_total_label():
+    total=get_total_expense()
+    total_label.config(text=f"Total Expense: Rs{total:.2f}")
 
 def main():
     global date_entry, category_entry, amount_entry, notes_entry
@@ -109,6 +122,11 @@ def main():
     )).grid(row=0, column=3, padx=5)
 
     tk.Button(button_frame, text="Show Pie Chart", command=show_pie_chart).grid(row=0, column=4, padx=5)
+
+    global total_label
+    total_label=tk.Label(root, text=f"Total Expense: Rs{get_total_expense():.2f}", font=("Arial", 20, "bold"))
+    total_label.pack(pady=5)
+
 
     tree = ttk.Treeview(root, columns=("ID", "Date", "Category", "Amount", "Notes"), show='headings', height=10)
     for col in tree["columns"]:
